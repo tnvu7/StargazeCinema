@@ -1,0 +1,33 @@
+.back-button {
+    position: absolute;
+    margin-top: -15px;
+
+}
+.main-image {
+    height: 300;
+    border-radius: 35px;
+    margin-top: -10px;
+
+}
+.year {
+    font-size: 15px;
+}
+.plot {
+    font-size: 20px;
+    font-family: sans-serif;
+  
+}
+
+.genre {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 50px;
+    font-style: italic;
+}
+
+.rating {font-size: 45px;}
+ion-select {
+    --padding-end: 25px; 
+    --padding-bottom: 25px; 
+}

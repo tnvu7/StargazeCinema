@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>moviedetails</ion-title>
+    <ion-back-button class="back-button" defaultHref="tabs/home">Go Back</ion-back-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngIf="movieInfo">
+    <ion-card-header>
+      <ion-card-title>
+        {{movieInfo.Title}}
+      </ion-card-title>
+      <ion-card-subtitle class="year">
+        {{ movieInfo.Year}}
+      </ion-card-subtitle>
+      <ion-card-subtitle>
+        {{ movieInfo.Released }}
+      </ion-card-subtitle>
+      
+    </ion-card-header>
+    <ion-card-content class="plot" text-center>
+      <img [src]="movieInfo.Poster" class="main-image" alt="">
+      {{ movieInfo.Plot }}
+     <ion-item>
+      <ion-label>More details</ion-label>
+      <ion-select [interfaceOptions]="{cssClass:'select'}">
+        <ion-select-option>Time: {{movieInfo.Runtime}}</ion-select-option>
+        <ion-select-option>Ranking: {{movieInfo.imdbRating}}/10</ion-select-option>
+        <ion-select-option>Genre: {{movieInfo.Genre}}</ion-select-option>
+        <ion-select-option>Awards: {{movieInfo.Awards}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+      <h3 class="rating"></h3>
+      <h2 class="genre"></h2>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

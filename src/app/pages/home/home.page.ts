@@ -26,8 +26,12 @@ export class HomePage implements OnInit {
     if (query == ''){
       this.createAlert("Please enter a movie title");
     } else {
+      // this.movieService.searchData(query).subscribe(val => {
+      //   console.log(val);
+      // }
+      //   );
       this.results = this.movieService.searchData(query);
-      console.log(this.results);
+      
     }
   }
 }

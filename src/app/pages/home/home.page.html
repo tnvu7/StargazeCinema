@@ -9,6 +9,7 @@
 
 <ion-list>
   <ion-item button *ngFor="let item of (results | async)"
+  [routerLink]="['/tabs/moviedetails', item.imdbID]"
   >
 
     <img [src]="item.Poster" height="60" style="border-radius: 40%; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">

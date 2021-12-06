@@ -22,13 +22,14 @@ fullurl = "";
   }
 
   searchData(title: string):  Observable<any> {
-    console.log(title);
+    console.log(`${this.url}?s=${encodeURI(title)}&type=movie&apikey=${this.apiKey}`);
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=movie&apikey=${this.apiKey}`).
     pipe(
       map(data => data['Search']));
     
   }
   getDetails(id: string) {
+    console.log(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
     return this.http.get(`${this.url}?i=${id}&plot=full&apikey=${this.apiKey}`);
   }
 }
