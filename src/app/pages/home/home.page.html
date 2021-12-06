@@ -5,5 +5,23 @@
 </ion-header>
 
 <ion-content>
+<ion-searchbar (search)="getMovies($event.target.value)" animated></ion-searchbar>
 
+<ion-list>
+  <ion-item button *ngFor="let item of (results | async)"
+  >
+
+    <img [src]="item.Poster" height="60" style="border-radius: 40%; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
+
+<ion-label text-wrap>
+<h3>{{item.Title}}</h3>
+<h4><b>Release date:</b> {{item.Year}}</h4>
+</ion-label>
+
+<ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
+<ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
+<ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon>
+
+  </ion-item>
+</ion-list>
 </ion-content>
