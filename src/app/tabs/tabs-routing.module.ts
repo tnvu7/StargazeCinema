@@ -16,6 +16,19 @@ const routes: Routes = [
         path: 'moviedetails/:id',
         loadChildren: () => import('../pages/moviedetails/moviedetails.module').then( m => m.MoviedetailsPageModule)
       },
+      {
+        path: 'watchlater',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../pages/watchlater/watchlater.module').then( m => m.WatchlaterPageModule)
+          },
+          {
+            path: ':id',
+            loadChildren: () => import('../pages/watchlater-details/watchlater-details.module').then( m => m.WatchlaterDetailsPageModule)
+          }
+        ]
+      },
     ]
   },
   {

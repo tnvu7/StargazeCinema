@@ -2,9 +2,9 @@ import { Movie } from "./movie.model";
 
 export class MovieDetail extends Movie {
  constructor (
+    public imdbID: string,
     public Title: string,
     public Year: string,
-    public imdbID: string,
     public Type: string,
     public Poster: string,
 
@@ -15,6 +15,6 @@ export class MovieDetail extends Movie {
     public imdbRating: string,
     public Rated: string,
  ) {
-     super(Title, Year, imdbID, Type, Poster);
+     super(imdbID, Title, Year, Type, Poster);
  }
 }

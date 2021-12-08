@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchType, MovieService } from 'src/app/service/movie.service';
+import { MovieService } from 'src/app/service/movie.service';
 import { AlertController } from '@ionic/angular';
+import { MovieDetail } from 'src/app/models/moviedetails.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -9,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  results: Observable<any>;
+  results: MovieDetail[] = [];
   constructor(private movieService: MovieService, public alertController: AlertController) { }
 
   ngOnInit() {
@@ -26,11 +27,13 @@ export class HomePage implements OnInit {
     if (query == ''){
       this.createAlert("Please enter a movie title");
     } else {
-      // this.movieService.searchData(query).subscribe(val => {
-      //   console.log(val);
-      // }
-      //   );
-      this.results = this.movieService.searchData(query);
+      this.movieService.searchData(query).subscribe(val => {
+        console.log(val);
+        this.results = val;
+        
+      }
+        );
+      //this.results = this.movieService.searchData(query);
       
     }
   }

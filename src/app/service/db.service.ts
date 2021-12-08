@@ -38,7 +38,9 @@ export class DbService {
   getDatabaseState() {
     return this.dbReady.asObservable();
   }
-
+  getMovies(): Observable<MovieDetail[]> {
+    return this.movies.asObservable();
+  }
   loadMovies() {
     return this.databaseObj.executeSql(`SELECT * FROM movies`, []).then(res => {
       let movies: MovieDetail[] = [];
