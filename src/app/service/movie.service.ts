@@ -39,7 +39,7 @@ export class MovieService {
   }
   searchDefaultMovie(){
     console.log(`${this.url}?s=love&type=movie&apikey=${this.apiKey}`);
-    return this.http.get(`${this.url}?s=dance&type=movie&apikey=${this.apiKey}`).
+    return this.http.get(`${this.url}?s=game&type=movie&apikey=${this.apiKey}`).
     pipe(
       map(data => {
         let movies: MovieDetail[] = [];
