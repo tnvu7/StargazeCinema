@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { MovieDetail } from 'src/app/models/moviedetails.model';
 import { DbService } from 'src/app/service/db.service';
 
@@ -11,7 +12,7 @@ import { DbService } from 'src/app/service/db.service';
 export class WatchlaterPage implements OnInit {
 
   movies: MovieDetail[] = [];
-  constructor(private dbService: DbService, private route: Router) { }
+  constructor(private dbService: DbService, private route: Router, private alertController: AlertController) { }
 
   ngOnInit() {
     this.dbService.getDatabaseState().subscribe(rdy => {
@@ -22,8 +23,29 @@ export class WatchlaterPage implements OnInit {
       }
     });
   }
+  async createAlert(msg) {
+    const alert = await this.alertController.create({
+      header: 'Warning',
+      message: msg,
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.dbService.deleteTable();
+            this.movies = [];
+          }
+        }, {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    await alert.present();
+  }
+ 
   deleteTable(){
-    this.dbService.deleteTable();
+    this.createAlert("Are you sure you want to delete the all Movies?");
+
   }
   
 

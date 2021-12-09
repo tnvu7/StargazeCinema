@@ -28,6 +28,7 @@ export class MoviedetailsPage implements OnInit {
     this.movieService.getDetails(id).subscribe(data => this.movieInfo = data);
   }
   nav() {
+    console.log("Go back from Movie Details");
     this.urlHistory.pop();
     this.location.back();
   }

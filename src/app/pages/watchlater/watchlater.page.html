@@ -1,23 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>watchlater</ion-title>
+  <ion-toolbar class="header">
+    <ion-title id="Appname">StarGaze Cinema</ion-title>
+    <ion-button fill="clear" item-right (click)="deleteTable()" slot="end">
+      Delete All
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button (click)="deleteTable()">Delete table</ion-button>
+<ion-content fullscreen>
   <ion-list>
+    <ion-item-sliding>
     <ion-item button *ngFor="let item of movies"
-    [routerLink]="['/tabs/moviedetails', item.imdbID]"
-    >
+    [routerLink]="['/tabs/watchlater', item.imdbID]"  >
   
-      <img [src]="item.Poster" height="60" style="border-radius: 40%; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
+      <img [src]="item.Poster" height="180" 
+      style="border-radius: 10pt; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
   
-  <ion-label text-wrap>
-  <h3>{{item.Title}}</h3>
-  <h4><b>Release date:</b> {{item.Year}}</h4>
-  </ion-label>
-  
+      <ion-label text-wrap >
+      <h3 class="item-title">{{item.Title}}</h3>
+      <h4 class="item-year">{{item.Year}}</h4>
+      </ion-label>
     </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="deleteMovie(item)">Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
   </ion-list>
+ 
 </ion-content>
+

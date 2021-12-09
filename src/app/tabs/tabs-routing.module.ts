@@ -18,7 +18,16 @@ const routes: Routes = [
       },
       {
         path: 'watchlater',
-        loadChildren: () => import('../pages/watchlater/watchlater.module').then( m => m.WatchlaterPageModule)
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../pages/watchlater/watchlater.module').then( m => m.WatchlaterPageModule)
+          },
+          {
+            path: ':id',
+            loadChildren: () => import('../pages/watchlater-details/watchlater-details.module').then( m => m.WatchlaterDetailsPageModule)
+          }
+        ]
       },
       {
         path: 'searched-results',

@@ -1,28 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Discover</ion-title>
+  <ion-toolbar class="header">
+    <ion-title id="Appname">StarGaze Cinema</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <br/>
+  <ion-label >Recommended for You</ion-label> <br/>
+  <ion-card class="card" button="true" *ngFor="let item of results"
+    [routerLink]="['/tabs/moviedetails', item.imdbID]">
+      <div class="crop">
+        <img src="{{item.Poster}}" />
+      </div>
+
+    <ion-card-content style="padding: 15px">
+      <ion-label class="item-year"> {{item.Year}}</ion-label> 
+      <br/>
+      <ion-label  class="item-title">{{item.Title}}</ion-label >
+    </ion-card-content>
+  </ion-card>
+           
+ 
 
 
-<ion-list>
+<!-- <ion-list>
   <ion-item button *ngFor="let item of results"
-  [routerLink]="['/tabs/moviedetails', item.imdbID]"
-  >
+  [routerLink]="['/tabs/moviedetails', item.imdbID]"  >
 
-    <img [src]="item.Poster" height="250" style="border-radius: 10pt; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
+    <img [src]="item.Poster" height="250" 
+    style="border-radius: 10pt; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
 
-<ion-label text-wrap >
-<h3 class="item-title"><b>{{item.Title}}</b></h3>
-<h4 ><b>Release date:</b> {{item.Year}}</h4>
-</ion-label>
-<!-- 
-<ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
-<ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
-<ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon> -->
+    <ion-label text-wrap >
+    <h3 class="item-title"><b>{{item.Title}}</b></h3>
+    <h4 class="item-year">{{item.Year}}</h4>
+    </ion-label>
 
   </ion-item>
-</ion-list>
+</ion-list> -->
 </ion-content>

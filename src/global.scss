@@ -24,7 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/Fonts/Montserrat-Regular.ttf')
+}
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('./assets/Fonts/Montserrat-Bold.ttf')
+}
+@font-face {
+    font-family: 'Montserrat-BoldItalic';
+    src: url('./assets/Fonts/Montserrat-BoldItalic.ttf')
+}
 ion-item {
     margin:30px auto;
     --border-width: 0;
@@ -32,8 +43,8 @@ ion-item {
     color: white;
     
 }
-
 ion-content {
     --ion-background-color: #1E172E;
+    
 }
 

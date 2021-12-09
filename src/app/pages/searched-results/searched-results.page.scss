@@ -1,0 +1,30 @@
+.item-title {
+    font-size: 15pt;
+    font-family: Montserrat-Bold;
+}
+.item-year {
+    color: #FBC91D;
+    font-family: Montserrat;
+    font-size: 12pt;
+}
+ion-header, ion-toolbar {
+    background-color: #1E172E;
+}
+ion-select {
+    --padding-end: 25px; 
+    --padding-bottom: 25px; 
+}
+ion-label {
+    color: #FBC91D;
+    padding-left: 20px;
+    font-family: Montserrat-Bold;
+    font-size: 17pt;
+}
+.header {
+    --background: #1E172E;
+}
+#Appname {
+    color: #FBC91D;
+    font-family: Montserrat-BoldItalic;
+    font-size: 18pt;
+}

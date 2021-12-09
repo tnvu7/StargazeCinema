@@ -1,0 +1,44 @@
+.item-title {
+    font-size: 18pt;
+    font-family: Montserrat-Bold;
+    padding: 20px; 
+    padding-top: 0px; 
+    padding-bottom: 10px;
+}
+.item-year {
+    padding: 20px; 
+    padding-top: 0px; 
+    padding-bottom: 0px;
+    font-family: Montserrat;
+    font-size: 12pt;
+}
+.card {
+    margin: 20px; 
+    margin-top: 30px; 
+    border-radius: 10px; 
+    background-color: white;
+}
+.crop {
+    width: auto;
+    height: 370px;
+    overflow: hidden;
+}
+.crop img {
+    width: 390px;
+    height: auto;
+}
+ion-button{
+    padding-left: 160px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    height:26px
+}
+.header {
+    --background: #1E172E;
+}
+#Appname {
+    color: #FBC91D;
+    font-family: Montserrat-BoldItalic;
+    font-size: 18pt;
+}

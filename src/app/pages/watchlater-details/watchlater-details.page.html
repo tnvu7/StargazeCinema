@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <button icon-only clear item-right (click)="nav()" slot="start">
+      <ion-icon size="large" name="chevron-back-circle-outline"></ion-icon>
+    </button>
+    <button icon-only clear item-right (click)="deleteMovie()" slot="end">
+      <ion-icon size="large" name="trash-outline"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img *ngIf="movieInfo" [src]="movieInfo.Poster" class="main-image" style="width: 430px; height: 500px" alt="">
+
+  <ion-card *ngIf="movieInfo">
+    <ion-card-content>
+      <h1>{{movieInfo.Title}}</h1>
+      <h2> <span>IMDB</span> {{movieInfo.imdbRating}} </h2>
+      <h2>{{movieInfo.Genre}}</h2>
+      <h2>{{movieInfo.Year}}, {{movieInfo.Runtime}}, {{movieInfo.Rated}}</h2>
+      <br/><br/>
+      <h1 class="movieinfo">Movie info</h1> <br/>
+      <h3>{{ movieInfo.Plot }}</h3>
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

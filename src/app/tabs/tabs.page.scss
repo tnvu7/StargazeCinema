@@ -1,1 +1,10 @@
-
+.iconstar {
+    color: #FBC91D;
+}
+ion-tab-bar, ion-tab-button{
+    background-color: #1E172E;
+}
+ion-tab-button {
+    --padding-top: 7px;
+    --color-selected: #FBC91D;
+}

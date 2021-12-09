@@ -1,39 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>moviedetails</ion-title>
-    <ion-button fill="clear" class="back-button" (click)="nav()">Go Back</ion-button>
-  </ion-toolbar>
+<ion-header >
+    <ion-toolbar class="header">
+      <button icon-only clear item-right (click)="nav()" slot="start">
+        <ion-icon size="large" name="chevron-back-circle-outline"></ion-icon>
+      </button>
+      <button icon-only clear item-right (click)="AddToList()" slot="end">
+        <ion-icon size="large" class="iconstar" name="star-outline"></ion-icon>
+      </button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="movieInfo">
-    <ion-card-header>
-      <ion-card-title>
-        {{movieInfo.Title}}
-      </ion-card-title>
-      <ion-card-subtitle class="year">
-        {{ movieInfo.Year}}
-      </ion-card-subtitle>
-      <ion-card-subtitle>
-        {{ movieInfo.Released }}
-      </ion-card-subtitle>
-      
-    </ion-card-header>
-    <ion-card-content class="plot" text-center>
-      <img [src]="movieInfo.Poster" class="main-image" alt="">
-      {{ movieInfo.Plot }}
-     <ion-item>
-      <ion-label>More details</ion-label>
-      <ion-select [interfaceOptions]="{cssClass:'select'}">
-        <ion-select-option>Time: {{movieInfo.Runtime}}</ion-select-option>
-        <ion-select-option>Ranking: {{movieInfo.imdbRating}}/10</ion-select-option>
-        <ion-select-option>Genre: {{movieInfo.Genre}}</ion-select-option>
-        <ion-select-option>Awards: {{movieInfo.Awards}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-      <h3 class="rating"></h3>
-      <h2 class="genre"></h2>
-    </ion-card-content>
-    <ion-button (click)="AddToList()">Add to Watch Later</ion-button>
-  </ion-card>
+    <img *ngIf="movieInfo" [src]="movieInfo.Poster" class="main-image" style="width: 430px; height: 500px" alt="">
+
+    <ion-card *ngIf="movieInfo">
+      <ion-card-content>
+        <h1>{{movieInfo.Title}}</h1>
+        <h2> <span>IMDB</span> {{movieInfo.imdbRating}} </h2>
+        <h2>{{movieInfo.Genre}}</h2>
+        <h2>{{movieInfo.Year}}, {{movieInfo.Runtime}}, {{movieInfo.Rated}}</h2>
+        <br/><br/>
+        <h1 class="movieinfo">Movie info</h1> <br/>
+        <h3>{{ movieInfo.Plot }}</h3>
+        
+      </ion-card-content>
+    </ion-card>
 </ion-content>

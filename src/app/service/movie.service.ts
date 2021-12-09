@@ -4,12 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MovieDetail } from '../models/moviedetails.model';
 
-// export enum SearchType {
-//   all = '',
-//   movie = 'movie',
-//   series = 'series',
-//   episode = 'episode'
-// }
 @Injectable({
   providedIn: 'root'
 })
@@ -45,7 +39,7 @@ export class MovieService {
   }
   searchDefaultMovie(){
     console.log(`${this.url}?s=love&type=movie&apikey=${this.apiKey}`);
-    return this.http.get(`${this.url}?s=love&type=movie&apikey=${this.apiKey}`).
+    return this.http.get(`${this.url}?s=dance&type=movie&apikey=${this.apiKey}`).
     pipe(
       map(data => {
         let movies: MovieDetail[] = [];
