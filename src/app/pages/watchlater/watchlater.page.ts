@@ -22,7 +22,9 @@ export class WatchlaterPage implements OnInit {
       }
     });
   }
-
+  deleteTable(){
+    this.dbService.deleteTable();
+  }
   
 
 }

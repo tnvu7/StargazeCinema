@@ -18,17 +18,12 @@ const routes: Routes = [
       },
       {
         path: 'watchlater',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../pages/watchlater/watchlater.module').then( m => m.WatchlaterPageModule)
-          },
-          {
-            path: ':id',
-            loadChildren: () => import('../pages/watchlater-details/watchlater-details.module').then( m => m.WatchlaterDetailsPageModule)
-          }
-        ]
+        loadChildren: () => import('../pages/watchlater/watchlater.module').then( m => m.WatchlaterPageModule)
       },
+      {
+        path: 'searched-results',
+        loadChildren: () => import('../pages/searched-results/searched-results.module').then( m => m.SearchedResultsPageModule)
+      }
     ]
   },
   {

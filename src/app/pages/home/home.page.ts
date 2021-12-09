@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MovieService } from 'src/app/service/movie.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { MovieDetail } from 'src/app/models/moviedetails.model';
+import { Router } from '@angular/router';
+import { Movie } from 'src/app/models/movie.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -10,31 +12,16 @@ import { MovieDetail } from 'src/app/models/moviedetails.model';
 })
 export class HomePage implements OnInit {
 
-  results: MovieDetail[] = [];
-  constructor(private movieService: MovieService, public alertController: AlertController) { }
+  results: Movie[] = [];
+  constructor(private movieService: MovieService, public alertController: AlertController, private router: Router,
+    public navCtrl: NavController) { }
 
   ngOnInit() {
-  }
-  async createAlert(msg) {
-    const alert = await this.alertController.create({
-      header: 'Error',
-      message: msg,
-      buttons: ['OK']
+    console.log("reinit");
+    this.movieService.searchDefaultMovie().subscribe(val => {
+      console.log(val);
+      this.results = val;
     });
-    await alert.present();
   }
-  getMovies(query: string){
-    if (query == ''){
-      this.createAlert("Please enter a movie title");
-    } else {
-      this.movieService.searchData(query).subscribe(val => {
-        console.log(val);
-        this.results = val;
-        
-      }
-        );
-      //this.results = this.movieService.searchData(query);
-      
-    }
-  }
+   
 }

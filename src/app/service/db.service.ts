@@ -25,14 +25,14 @@ export class DbService {
       location: 'default'
     }).then((db: SQLiteObject) => {
       this.databaseObj = db;
-      this.databaseObj.executeSql(`CREATE TABLE IF NOT EXISTS movies(imdbID TEXT, Title TEXT, 
+      this.databaseObj.executeSql(`CREATE TABLE IF NOT EXISTS movies(id INTEGER PRIMARY KEY AUTOINCREMENT, imdbID TEXT, Title TEXT, 
         Year TEXT, Type TEXT, Poster TEXT, Runtime TEXT, Released TEXT, Genre TEXT, Plot TEXT, 
         imdbRating TEXT, Rated TEXT)`, []).then(() => {
             this.loadMovies();
             this.dbReady.next(true);
         })
         .catch(e => console.log(e));
-    }). catch(e => console.log(e));
+    }).catch(e => console.log(e));
   }
 
   getDatabaseState() {
@@ -44,19 +44,22 @@ export class DbService {
   loadMovies() {
     return this.databaseObj.executeSql(`SELECT * FROM movies`, []).then(res => {
       let movies: MovieDetail[] = [];
+      console.log(res.rows.length);
+      console.log(res);
       for (let i = 0; i<res.rows.length; i++){
         movies.push({
-          imdbID: res.rows.items(i).imdbID,
-          Title: res.rows.items(i).Title,
-          Year: res.rows.items(i).Year,
-          Type: res.rows.items(i).Type,
-          Poster: res.rows.items(i).Poster,
-          Runtime: res.rows.items(i).Runtime,
-          Released: res.rows.items(i).Released,
-          Genre: res.rows.items(i).Genre,
-          Plot: res.rows.items(i).Plot,
-          imdbRating: res.rows.items(i).imdbRating,
-          Rated: res.rows.items(i).Rated
+          id: res.rows.item(i).id,
+          imdbID: res.rows.item(i).imdbID,
+          Title: res.rows.item(i).Title,
+          Year: res.rows.item(i).Year,
+          Type: res.rows.item(i).Type,
+          Poster: res.rows.item(i).Poster,
+          Runtime: res.rows.item(i).Runtime,
+          Released: res.rows.item(i).Released,
+          Genre: res.rows.item(i).Genre,
+          Plot: res.rows.item(i).Plot,
+          imdbRating: res.rows.item(i).imdbRating,
+          Rated: res.rows.item(i).Rated
         });
       }
       this.movies.next(movies);
@@ -71,7 +74,7 @@ export class DbService {
                                       VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, data).then(res => {
       this.loadMovies();
       console.log('Added Movies: ', res);
-      console.log("Inserted Id: ", res.imdbID);
+      console.log("Inserted Id: ", res.insertedId);
       return res.imdbID;
     }).catch(e => console.log(e));
   }
@@ -79,17 +82,18 @@ export class DbService {
   getMovieById(id: string){
     return this.databaseObj.executeSql(`SELECT * FROM movies WHERE imdbID=?`, [id]).then(res => {
       return {
-        imdbID: res.rows.items(0).imdbID,
-          Title: res.rows.items(0).Title,
-          Year: res.rows.items(0).Year,
-          Type: res.rows.items(0).Type,
-          Poster: res.rows.items(0).Poster,
-          Runtime: res.rows.items(0).Runtime,
-          Released: res.rows.items(0).Released,
-          Genre: res.rows.items(0).Genre,
-          Plot: res.rows.items(0).Plot,
-          imdbRating: res.rows.items(0).imdbRating,
-          Rated: res.rows.items(0).Rated
+        id: res.rows.item(0).id,
+        imdbID: res.rows.item(0).imdbID,
+          Title: res.rows.item(0).Title,
+          Year: res.rows.item(0).Year,
+          Type: res.rows.item(0).Type,
+          Poster: res.rows.item(0).Poster,
+          Runtime: res.rows.item(0).Runtime,
+          Released: res.rows.item(0).Released,
+          Genre: res.rows.item(0).Genre,
+          Plot: res.rows.item(0).Plot,
+          imdbRating: res.rows.item(0).imdbRating,
+          Rated: res.rows.item(0).Rated
       }
     }).catch(e => console.log(e));
   }
@@ -98,5 +102,9 @@ export class DbService {
     return this.databaseObj.executeSql(`DELETE FROM movies WHERE imdbID=?`, [id]).then(res => {
       this.loadMovies();
     }).catch(e => console.log(e));
+  }
+
+  deleteTable(){
+    this.databaseObj.executeSql("DROP TABLE movies");
   }
 }

@@ -14,6 +14,7 @@ export class MovieDetail extends Movie {
     public Plot: string,
     public imdbRating: string,
     public Rated: string,
+    public id?: number,
  ) {
      super(imdbID, Title, Year, Type, Poster);
  }

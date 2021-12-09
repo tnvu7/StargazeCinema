@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>searchedResults</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (search)="getMovies($event.target.value)" animated></ion-searchbar>
+  <ion-label *ngIf="isLoaded == true">Searched results</ion-label>
+  <ion-list>
+    <ion-item button *ngFor="let item of results"
+    [routerLink]="['/tabs/moviedetails', item.imdbID]" >
+      <img [src]="item.Poster" height="200" style="border-radius: 10pt; padding-right: 10px; padding-bottom: 10px;" *ngIf="item.Poster != 'Not Available'" alt="">
+  
+  <ion-label text-wrap>
+  <h3>{{item.Title}}</h3>
+  <h4><b>Release date:</b> {{item.Year}}</h4>
+  </ion-label>
+ 
+  
+    </ion-item>
+  </ion-list>
+</ion-content>
