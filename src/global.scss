@@ -24,17 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
 @font-face {
-    font-family: 'Montserrat';
-    src: url('./assets/Fonts/Montserrat-Regular.ttf')
+    font-family: Lato;
+    src: url('./assets/Lato/Lato-Regular.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-Bold';
-    src: url('./assets/Fonts/Montserrat-Bold.ttf')
+    font-family: Lato-Bold;
+    src: url('./assets/Lato/Lato-Bold.ttf');
 }
 @font-face {
-    font-family: 'Montserrat-BoldItalic';
-    src: url('./assets/Fonts/Montserrat-BoldItalic.ttf')
+    font-family: Lato-BoldItalic;
+    src: url('./assets/Lato/Lato-BoldItalic.ttf');
 }
 ion-item {
     margin:30px auto;
