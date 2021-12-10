@@ -19,6 +19,7 @@ export class WatchlaterPage implements OnInit {
       if (rdy) {
         this.dbService.getMovies().subscribe(movies => {
           this.movies = movies;
+          console.log(this.movies);
         });
       }
     });

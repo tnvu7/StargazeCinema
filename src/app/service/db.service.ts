@@ -106,5 +106,8 @@ export class DbService {
 
   deleteTable(){
     this.databaseObj.executeSql("DROP TABLE movies");
+    this.plt.ready().then(()=> {
+      this.createDBAndTables();
+    });
   }
 }

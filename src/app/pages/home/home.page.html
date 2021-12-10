@@ -6,7 +6,7 @@
 
 <ion-content>
   <br/>
-  <ion-label >Recommended for You</ion-label> <br/>
+  <ion-label class="label">Recommended for You</ion-label> <br/> 
   <ion-card class="card" button="true" *ngFor="let item of results"
     [routerLink]="['/tabs/moviedetails', item.imdbID]">
       <div class="crop">
