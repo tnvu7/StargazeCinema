@@ -46,8 +46,5 @@ export class WatchlaterPage implements OnInit {
  
   deleteTable(){
     this.createAlert("Are you sure you want to delete the all Movies?");
-
   }
-  
-
 }
